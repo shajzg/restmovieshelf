@@ -1,0 +1,14 @@
+use djangoadmin to start a app name pymovieshelf
+modify setting.py 
+  add template dir
+  add static dir 
+
+
+virtualenv .
+pip install django==1.11
+pip install djangorestframework
+pip install IMDbPY
+pip install simplejson
+django-admin startproject djangoapp
+django-admin startapp pymovieshelf
+  

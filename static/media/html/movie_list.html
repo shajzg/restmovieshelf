@@ -1,0 +1,33 @@
+<div class="content">
+    <div>
+            <label for="title">Search: </label>
+            <input type="text" name="title" id="title" ng-model="moviecontent"/>
+            <label>Total: {$movies.length$} Movies </label>
+    </div>
+    <div></div>
+    <div class="list" ng-show="movies" >
+        <table class="tbl_list">
+            <thead>
+                <tr>
+                    <th><a href="" ng-click="movieSortOrder='fields.title';reverse = !reverse">Title</th>
+                    <th><a href="" ng-click="movieSortOrder='fields.chinesetitle';reverse = !reverse">ChineseTitle</th>
+                    <th><a href="" ng-click="movieSortOrder='-fields.year';reverse = !reverse">Year</th>
+                    <th><a href="" ng-click="movieSortOrder='fields.director';reverse = !reverse">Director</th>
+                    <th><a href="" ng-click="movieSortOrder='fields.rating';reverse = !reverse">Rating</th>
+                    <th><a href="" ng-click="movieSortOrder='fields.fmt';reverse = !reverse">Format</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="movie in movies | orderBy:movieSortOrder:reverse | filter:moviecontent">
+                    <td><a href="/pymovieshelf/{$movie.pk$}/">{$movie.fields.title$}</    a></td>
+                    <td><a href="/pymovieshelf/{$movie.pk$}/">{$movie.fields.chinesetitle$}</a></td>
+                    <td>{$ movie.fields.year $}</td>
+                    <td>{$ movie.fields.director $}</td>
+                    <td>{$ movie.fields.rating $}</td>
+                    <td>{$ movie.fields.fmt $}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

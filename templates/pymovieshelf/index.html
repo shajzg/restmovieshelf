@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="movieshelf">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <script data-require="angular.js@1.6.2" data-semver="1.6.2" src="/static/js/angular.js"></script>
+        <script src="/static/js/app.js"></script> 
+        <script src="/static/js/appctrls.js"></script> 
+        <link rel="stylesheet" type="text/css" href="/static/media/css/pymovieshelf/pymovieshelf.css"/>
+        <meta name="description" content="Python based DVD manager." />
+        <title>Movieshelf</title>
+    </head>
+
+    <body ng-controller="MainController">
+         <div class="outer">
+             <div class="middle">
+                 <div class="header">
+                     <h1>{$title$}</h1>
+                     {% if user.is_authenticated %}
+                     <div class="userinfo"><a href="/admin/pymovieshelf/movie/" style="padding-right: 20px">Admin</a><a href="/admin/logout/">Log out</a></div>
+                     {% else %}
+                     <div class="userinfo"><a href="/admin/">Log in</a></div>
+                     {% endif %}
+                 </div>
+                 <div ng-include="'/static/media/html/movie_list.html'"></div>
+                 <div class="footer">
+                     {$copyright$}
+                 </div>
+             </div>
+         </div>
+</body>
+</html>
+
