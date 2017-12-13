@@ -6,19 +6,26 @@ RATED_TYPE = (
         ('2','GENERAL'),
         )
 
+FORMAT_TYPE = (
+        ('0','Blu-Ray'),
+        ('1','Blu-Ray 3D'),
+        ('2','DVD'),
+        ('3','Blu-Ray 4K')
+        )
+
 class Movie(models.Model):
     title = models.CharField(max_length=200)
     chinesetitle = models.CharField(max_length=200)
     director = models.CharField(max_length=100)
-    rated = models.CharField(max_length=1,choices=RATED_TYPE)
+    rated = models.CharField(max_length=1,choices=RATED_TYPE,default='0')
     year = models.PositiveIntegerField()
     genres = models.CharField(max_length=200)
     summary = models.TextField()
-    fmt = models.CharField(max_length=20)
+    fmt = models.CharField(max_length=1,choices=FORMAT_TYPE)
     length = models.PositiveIntegerField()
     rating = models.FloatField()
-    production = models.CharField(max_length=40)
-    sn = models.CharField(max_length=20)
+    production = models.CharField(max_length=40,default='')
+    sn = models.CharField(max_length=20,default='')
     url = models.URLField()
     img = models.URLField()
 
