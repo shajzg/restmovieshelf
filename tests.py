@@ -65,12 +65,12 @@ class MovieTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         token = response.data.get("token")
         url = reverse('movie-create')
-        data = {"title":"The Matrix","chinesetitle":"hhe","director":"Lana Wachowski, Lilly Wachowski","rated":0,"year":"1999","genres":"Action, Sci-Fi","summary":"A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.","fmt":"0","length":"136 min","rating":"8.7","production":"Warner Bros. Pictures","sn":"sdfs","url":"http://www.whatisthematrix.com","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"}
+        data = {"title":"The Matrix","chinesetitle":"hhe","director":"Lana Wachowski, Lilly Wachowski","rated":0,"year":"1999","genres":"Action, Sci-Fi","summary":"A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.","fmt":"2","length":"136 min","rating":"8.7","production":"Warner Bros. Pictures","sn":"sdfs","url":"http://www.whatisthematrix.com","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"}
         self.client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Movie.objects.count(), 1)
-        self.assertEqual(Movie.objects.get().title, 'The Matrix')
+        self.assertEqual(Movie.objects.get().fmt, 'DVD')
 
     def test_list_movies(self):
         url = api_reverse("movie-list")

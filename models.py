@@ -41,14 +41,14 @@ FORMAT_TYPE = (
         ('0','Blu-Ray'),
         ('1','Blu-Ray 3D'),
         ('2','DVD'),
-        ('3','Blu-Ray 4K')
-        )
+        ('3','Blu-Ray 4K'),
+)
 
 class Movie(models.Model):
     title = models.CharField(max_length=200)
     chinesetitle = models.CharField(max_length=200)
     director = models.CharField(max_length=100)
-    rated = models.CharField(max_length=1,choices=RATED_TYPE,default='0')
+    rated = models.CharField(max_length=1,choices=RATED_TYPE)
     year = models.PositiveIntegerField()
     genres = models.CharField(max_length=200)
     summary = models.TextField()
@@ -57,8 +57,8 @@ class Movie(models.Model):
     rating = models.FloatField()
     production = models.CharField(max_length=40,default='')
     sn = models.CharField(max_length=20,default='')
-    url = models.URLField()
-    img = models.URLField()
+    url = models.URLField(default='http://blue-ray.win/pymovieshelf/')
+    img = models.URLField(default='')
 
     def __unicode__(self):
         return self.title
