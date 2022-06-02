@@ -7,7 +7,7 @@ django-cors-headers==2.1.0
 django-extensions==1.9.1
 djangorestframework==3.7.0
 djangorestframework-jwt==1.11.0
-html5lib==0.999
+html5lib==0.99999999
 httpie==0.9.9
 idna==2.5
 pbr==3.1.1
